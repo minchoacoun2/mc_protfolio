@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promotion</title>
+  <link rel="icon" type="image/png" href="./images/promotion_favion.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+
+    main {
+      width: 100%;
+    }
+
+    .promotion-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 0;
+    }
+
+    .last-image-section {
+      display: flex;
+      width: 100%;
+      padding: clamp(50px, 8vw, 150px)
+               clamp(30px, 12vw, 230px);
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .last-image-section .promotion-image {
+      width: min(100%, 1100px);
+    }
+
+    @media (max-width: 700px) {
+      .last-image-section {
+        padding: 45px 24px;
+      }
+
+      .last-image-section .promotion-image {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img
+      class="promotion-image"
+      src="./images/promotion_01.png"
+      alt="Alexander Calder 프로모션 배너"
+    >
+
+    <img
+      class="promotion-image"
+      src="./images/promotion_02.png"
+      alt="소셜 미디어 프로모션 디자인"
+      loading="lazy"
+    >
+
+    <img
+      class="promotion-image"
+      src="./images/promotion_03.png"
+      alt="가을 프로모션 디자인"
+      loading="lazy"
+    >
+
+    <section class="last-image-section">
+      <img
+        class="promotion-image"
+        src="./images/promotion_04.png"
+        alt="패션 프리오더 프로모션 디자인"
+        loading="lazy"
+      >
+    </section>
+  </main>
+</body>
+</html>

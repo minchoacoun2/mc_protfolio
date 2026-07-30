@@ -1,0 +1,1541 @@
+@charset "UTF-8";
+
+/* FONT */
+
+@font-face {
+  font-family: "Griffiths";
+  src: url("../fonts/Griffiths.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "KBLJump";
+  src: url("../fonts/KBLJump_EB_Extended.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-display: swap;
+}
+
+/* COMMON */
+
+:root {
+  --red: #8b0000;
+  --cream: #fffaf7;
+  --white: #ffffff;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: none;
+}
+
+body {
+  overflow-x: hidden;
+  background: #ffffff;
+  color: var(--red);
+  font-family: "Pretendard", sans-serif;
+}
+
+.section {
+  display: flex;
+  width: 100%;
+  min-height: 100svh;
+  padding: 4vh 3vw;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.section-frame {
+  position: relative;
+  width: min(1801px, 94vw);
+  aspect-ratio: 1801 / 879;
+  overflow: hidden;
+}
+
+/* HERO */
+
+.hero-frame {
+  background: #f3dfd1;
+  color: #ffffff;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  animation: heroImage 2.5s
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-title {
+  position: absolute;
+  top: 5%;
+  left: 2.2%;
+  z-index: 20;
+
+  opacity: 0;
+  filter: blur(20px);
+  transform: translateY(40px);
+
+  animation: heroTitle 1.5s 0.4s
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-title h1 {
+  font-family: "KBLJump", sans-serif;
+  font-size: clamp(65px, 13.5vw, 240px);
+  line-height: 0.72;
+  letter-spacing: -0.055em;
+}
+
+.hero-title p {
+  margin-top: 2%;
+  font-family: "Griffiths", serif;
+  font-size: clamp(60px, 12vw, 210px);
+  line-height: 0.78;
+}
+
+.hero-name,
+.hero-year {
+  position: absolute;
+  bottom: 4%;
+  z-index: 20;
+
+  color: #ffffff;
+  font-size: clamp(11px, 0.85vw, 17px);
+  font-weight: 700;
+
+  opacity: 0;
+  animation: fadeIn 1s 1.3s forwards;
+}
+
+.hero-name {
+  left: 2.2%;
+}
+
+.hero-year {
+  right: 2.2%;
+}
+
+@keyframes heroImage {
+  from {
+    opacity: 0;
+    filter: blur(35px);
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes heroTitle {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* WATER DROP */
+
+.water-drops {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.drop {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border-top: 2px solid rgba(255, 255, 255, 0.85);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid rgba(110, 0, 0, 0.2);
+
+  box-shadow:
+    inset 8px 10px 15px rgba(255, 255, 255, 0.2),
+    inset -8px -10px 16px rgba(100, 0, 0, 0.14),
+    0 12px 20px rgba(90, 0, 0, 0.16);
+
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+
+  animation: dropAppear 1.2s
+    cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.drop::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 25%;
+  height: 18%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  filter: blur(2px);
+}
+
+.drop-01 {
+  top: 13%;
+  left: 35%;
+  width: 4%;
+  aspect-ratio: 1;
+  animation-delay: 0.2s;
+}
+
+.drop-02 {
+  top: 17%;
+  left: 68%;
+  width: 10%;
+  aspect-ratio: 1;
+  animation-delay: 0.5s;
+}
+
+.drop-03 {
+  top: 44%;
+  left: 45%;
+  width: 7%;
+  aspect-ratio: 1;
+  animation-delay: 0.8s;
+}
+
+.drop-04 {
+  top: 25%;
+  right: 4%;
+  width: 4.5%;
+  aspect-ratio: 1;
+  animation-delay: 1.1s;
+}
+
+.drop-05 {
+  left: 26%;
+  bottom: 14%;
+  width: 5.5%;
+  aspect-ratio: 1;
+  animation-delay: 1.4s;
+}
+
+.drop-06 {
+  right: 10%;
+  bottom: 13%;
+  width: 8%;
+  aspect-ratio: 1;
+  animation-delay: 1.7s;
+}
+
+@keyframes dropAppear {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(35px) scale(0.1);
+  }
+
+  to {
+    opacity: 0.85;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* PROFILE */
+
+.profile-frame {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  gap: 3%;
+  padding: 5.5% 3.5%;
+  background: var(--red);
+  color: #ffffff;
+}
+
+.profile-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #d9d9d9;
+  overflow: hidden;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 64% 1fr;
+  flex: 0 0 20.2%;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.profile-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.profile-row > strong,
+.profile-mail-row a {
+  padding-left: 3%;
+  font-family: "KBLJump", sans-serif;
+  font-size: clamp(18px, 2.8vw, 52px);
+  line-height: 1;
+}
+
+.profile-detail {
+  display: grid;
+  grid-template-columns: 22% 1fr;
+  gap: 5%;
+  align-items: start;
+  font-size: clamp(8px, 0.78vw, 15px);
+  line-height: 1.55;
+}
+
+.profile-detail b {
+  font-weight: 700;
+}
+
+.profile-mail-row {
+  display: flex;
+}
+
+/* 이메일 전용 마우스 오버 효과 */
+.profile-mail-row a {
+  position: relative;
+  display: inline-block;
+  transition:
+    color 0.4s ease,
+    text-shadow 0.4s ease,
+    letter-spacing 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profile-mail-row a:hover,
+.profile-mail-row a:focus-visible {
+  color: #fff4e9;
+  letter-spacing: 0.025em;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.55),
+    0 0 22px rgba(255, 220, 200, 0.38);
+  transform: translateX(10px);
+}
+
+/* 프로필 AOS: 사진과 각 행이 순서대로 등장 */
+.profile-frame .profile-photo,
+.profile-frame .profile-row {
+  opacity: 0;
+  filter: blur(18px);
+  transform: translateY(28px);
+  transition:
+    opacity 1.1s ease,
+    filter 1.1s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profile-frame.is-visible .profile-photo,
+.profile-frame.is-visible .profile-row {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.profile-frame.is-visible .profile-photo {
+  transition-delay: 0.12s;
+}
+
+.profile-frame.is-visible .profile-row:nth-child(1) {
+  transition-delay: 0.25s;
+}
+
+.profile-frame.is-visible .profile-row:nth-child(2) {
+  transition-delay: 0.43s;
+}
+
+.profile-frame.is-visible .profile-row:nth-child(3) {
+  transition-delay: 0.61s;
+}
+
+.profile-frame.is-visible .profile-row:nth-child(4) {
+  transition-delay: 0.79s;
+}
+
+/* INDEX */
+
+.index-frame {
+  display: flex;
+  flex-direction: column;
+  padding: 5% 4.5%;
+  background: var(--red);
+  color: #ffffff;
+}
+
+.index-item {
+  display: grid;
+  grid-template-columns: 23% 1fr;
+  flex: 1;
+  align-items: center;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+
+  font-family: "KBLJump", sans-serif;
+  font-size: clamp(24px, 4vw, 72px);
+
+  opacity: 0;
+  filter: blur(18px);
+  transform: translateX(-100px);
+
+  transition:
+    opacity 1.3s ease,
+    filter 1.3s ease,
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    padding-left 0.25s ease;
+}
+
+.index-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.index-section.is-visible .index-item {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.index-section.is-visible .index-item:nth-child(1) {
+  transition-delay: 0.15s;
+}
+
+.index-section.is-visible .index-item:nth-child(2) {
+  transition-delay: 0.35s;
+}
+
+.index-section.is-visible .index-item:nth-child(3) {
+  transition-delay: 0.55s;
+}
+
+.index-section.is-visible .index-item:nth-child(4) {
+  transition-delay: 0.75s;
+}
+
+.index-section.is-visible .index-item:nth-child(5) {
+  transition-delay: 0.95s;
+}
+
+.index-item:hover,
+.index-item:focus-visible {
+  padding-left: 2%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* PROJECT */
+
+.project-frame {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  background: var(--cream);
+}
+
+.project-text {
+  display: flex;
+  padding: 9% 8%;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-text h2,
+.promotion-header h2 {
+  margin-bottom: 2.5%;
+  font-family: "KBLJump", sans-serif;
+  font-size: clamp(22px, 2.6vw, 48px);
+  line-height: 1;
+}
+
+.project-text > strong,
+.promotion-header strong {
+  margin-bottom: 3%;
+  font-size: clamp(10px, 1vw, 18px);
+}
+
+.project-info,
+.project-description {
+  color: #323232;
+  font-size: clamp(9px, 0.85vw, 16px);
+  line-height: 1.7;
+}
+
+.project-description + .project-description {
+  margin-top: 4%;
+}
+
+.project-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 7%;
+}
+
+.project-buttons a,
+.button {
+  position: relative;
+  display: inline-flex;
+  min-height: 38px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  background: var(--red);
+  color: #ffffff;
+  box-shadow:
+    0 5px 14px rgba(80, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  font-size: clamp(8px, 0.75vw, 14px);
+  font-family: "Pretendard", sans-serif;
+  font-weight: 500;
+
+  transition:
+    color 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-buttons a::before,
+.button::before {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -45%;
+  width: 34%;
+  height: 260%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  filter: blur(3px);
+  transform: rotate(18deg) translateX(-180%);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-buttons a:hover,
+.project-buttons a:focus-visible,
+.button:hover,
+.button:focus-visible {
+  background: #8b0000;
+  color: #fff8f2;
+  box-shadow:
+    0 10px 25px rgba(80, 0, 0, 0.24),
+    0 0 18px rgba(139, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.project-buttons a:hover::before,
+.project-buttons a:focus-visible::before,
+.button:hover::before,
+.button:focus-visible::before {
+  transform: rotate(18deg) translateX(520%);
+}
+
+.project-buttons a:active,
+.button:active {
+  box-shadow:
+    0 3px 8px rgba(80, 0, 0, 0.2),
+    inset 0 2px 5px rgba(55, 0, 0, 0.25);
+  transform: translateY(1px) scale(0.975);
+  transition-duration: 0.12s;
+}
+
+.project-image {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-image-contain img {
+  padding: 6%;
+  object-fit: contain;
+}
+
+.ai-frame {
+  grid-template-columns: 57% 43%;
+}
+
+/* PROMOTION */
+
+.promotion-frame {
+  display: grid;
+  grid-template-rows: 26% 74%;
+  background: var(--cream);
+}
+
+.promotion-header {
+  display: flex;
+  padding: 4% 4.5%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promotion-image {
+  overflow: hidden;
+}
+
+.promotion-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* THANKS */
+
+.thanks-frame {
+  color: #ffffff;
+}
+
+.thanks-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thanks-name {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: #323232;
+  font-size: clamp(8px, 0.7vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+}
+
+.thanks-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.thanks-text h2 {
+  font-family: "Griffiths", serif;
+  font-size: clamp(65px, 10vw, 180px);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.thanks-text p {
+  margin-top: 6%;
+  font-size: clamp(8px, 0.7vw, 14px);
+  letter-spacing: 0.25em;
+}
+
+.thanks-category,
+.thanks-year {
+  position: absolute;
+  bottom: 5%;
+  color: rgba(70, 70, 70, 0.65);
+  font-family: "Griffiths", serif;
+  font-size: clamp(10px, 1.1vw, 20px);
+}
+
+.thanks-category {
+  left: 3%;
+}
+
+.thanks-year {
+  right: 3%;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal {
+  opacity: 0;
+  filter: blur(22px);
+  transform: translateY(80px);
+
+  transition:
+    opacity 1.5s ease,
+    filter 1.5s ease,
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* 작업물 섹션 배경은 처음부터 선명하게 표시 */
+.project-frame.reveal,
+.promotion-frame.reveal {
+  filter: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .section {
+    min-height: auto;
+    padding: 35px 12px;
+  }
+
+  .section-frame {
+    width: 100%;
+    min-height: 580px;
+    aspect-ratio: auto;
+  }
+
+  .hero-frame,
+  .thanks-frame {
+    min-height: 48.8vw;
+  }
+
+  .profile-frame {
+    grid-template-columns: 23% 1fr;
+    min-height: 440px;
+  }
+
+  .profile-row {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-detail {
+    display: none;
+  }
+
+  .index-frame {
+    min-height: 440px;
+  }
+
+  .index-item {
+    grid-template-columns: 25% 1fr;
+    font-size: clamp(18px, 5vw, 30px);
+  }
+
+  .project-frame,
+  .ai-frame {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .project-text {
+    min-height: 360px;
+    padding: 50px 30px;
+  }
+
+  .project-image {
+    min-height: 420px;
+  }
+
+  .promotion-frame {
+    grid-template-rows: auto 420px;
+  }
+
+  .promotion-header {
+    padding: 35px 25px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-background,
+  .hero-title,
+  .hero-name,
+  .hero-year,
+  .drop {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .reveal,
+  .index-item {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   2026-07 PORTFOLIO MOTION & PROJECT LAYOUT
+   ========================================================= */
+
+/* 메인: 물방울 없이 텍스트가 번지듯 순서대로 등장 */
+.hero-title {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  animation: none;
+}
+
+.hero-title h1,
+.hero-title p {
+  opacity: 0;
+  will-change: opacity, filter, transform;
+}
+
+.hero-title h1 {
+  filter: blur(36px);
+  transform: translateY(38px) scale(1.04);
+  animation: ink-spread 1.8s 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-title p {
+  filter: blur(42px);
+  transform: translateY(44px) scale(1.045);
+  animation: ink-spread 2s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-name,
+.hero-year {
+  filter: blur(14px);
+  animation: small-ink-spread 1.4s 1.9s ease forwards;
+}
+
+@keyframes ink-spread {
+  0% {
+    opacity: 0;
+    filter: blur(42px);
+    transform: translateY(44px) scale(1.05);
+  }
+
+  55% {
+    opacity: 0.82;
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes small-ink-spread {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* 모든 작업물 소개 섹션에 동일한 배경 적용 */
+.project-frame,
+.promotion-frame {
+  background-color: var(--cream);
+  background-image: url("../images/section_bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* 시안 기준: 왼쪽 설명, 오른쪽 작업 이미지 */
+.project-frame {
+  grid-template-columns: 43.5% 56.5%;
+}
+
+.project-text {
+  padding: 10.5% 8.5%;
+  justify-content: flex-start;
+}
+
+.project-image {
+  display: flex;
+  min-width: 0;
+  padding: 7% 3.8% 4% 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image img,
+.project-image-contain img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* 웹 리뉴얼, 브랜딩, 팀 프로젝트 이미지를 박스 높이에 맞춤 */
+#web .project-image,
+#branding .project-image,
+#team01 .project-image {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#web .project-image img,
+#branding .project-image img,
+#team01 .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* AI 작업은 오른쪽 이미지가 끝까지 차도록 */
+.ai-frame {
+  grid-template-columns: 57% 43%;
+}
+
+/* 팀 프로젝트 제목은 숫자까지 한 줄로 정렬 */
+#team01 .project-text h2,
+#team02 .project-text h2 {
+  font-size: clamp(21px, 2.25vw, 42px);
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.ai-frame .project-image {
+  padding: 0;
+}
+
+.ai-frame .project-image img {
+  object-fit: cover;
+}
+
+/* 프로모션은 상단 제목, 하단 이미지 구성 */
+.promotion-frame {
+  grid-template-rows: 25% 75%;
+  border: 1px solid var(--red);
+}
+
+.promotion-image img {
+  object-position: center;
+}
+
+.promotion-header {
+  position: relative;
+  padding: 2.5% 2.8%;
+}
+
+.promotion-header h2 {
+  margin-bottom: 2%;
+  font-size: clamp(22px, 2.1vw, 38px);
+}
+
+.promotion-header .button {
+  position: absolute;
+  right: 2.8%;
+  bottom: 8%;
+}
+
+/* 목차 AOS: 화면 진입 시 한 줄씩 번지며 슬라이드 */
+.index-item {
+  opacity: 0;
+  filter: blur(22px);
+  transform: translateX(-120px);
+  transition:
+    opacity 1.35s ease,
+    filter 1.35s ease,
+    transform 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+    padding-left 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.index-section.is-visible .index-item {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.index-section.is-visible .index-item:nth-child(1) { transition-delay: 0.12s; }
+.index-section.is-visible .index-item:nth-child(2) { transition-delay: 0.34s; }
+.index-section.is-visible .index-item:nth-child(3) { transition-delay: 0.56s; }
+.index-section.is-visible .index-item:nth-child(4) { transition-delay: 0.78s; }
+.index-section.is-visible .index-item:nth-child(5) { transition-delay: 1s; }
+
+@media (max-width: 700px) {
+  .project-frame,
+  .ai-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image,
+  .ai-frame .project-image {
+    min-height: 420px;
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title h1,
+  .hero-title p,
+  .hero-name,
+  .hero-year {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* =========================================================
+   HERO LETTER LOOP
+   ========================================================= */
+
+/* 기존 문장 단위 애니메이션 해제 */
+.hero-title h1,
+.hero-title p {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  animation: none;
+}
+
+/* DESIGN은 조금 작게 */
+.hero-title h1 {
+  font-size: clamp(56px, 10.8vw, 190px);
+  letter-spacing: -0.015em;
+}
+
+/* PORTFOLIO는 조금 크게 하고 아래로 이동 */
+.hero-title p {
+  margin-top: 4%;
+  font-size: clamp(68px, 12.8vw, 225px);
+}
+
+.hero-char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(30px);
+  transform: translateY(8px) scale(0.98);
+  transform-origin: center bottom;
+  will-change: opacity, filter, transform;
+}
+
+.hero-title.is-running .hero-char {
+  animation: hero-char-pop 1.55s
+    cubic-bezier(0.22, 0.7, 0.25, 1)
+    calc(var(--char-index) * 0.2s)
+    forwards;
+}
+
+@keyframes hero-char-pop {
+  0% {
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateY(8px) scale(0.98);
+  }
+
+  45% {
+    opacity: 0.55;
+    filter: blur(15px);
+    transform: translateY(4px) scale(0.99);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-char,
+  .hero-title.is-running .hero-char {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE FINAL OVERRIDES
+   ========================================================= */
+
+/* 태블릿 */
+@media (max-width: 1100px) {
+  .section {
+    padding: 42px 24px;
+  }
+
+  .section-frame {
+    width: 100%;
+  }
+
+  .profile-frame {
+    grid-template-columns: 22% 1fr;
+    gap: 2.5%;
+    padding: 5% 3%;
+  }
+
+  .profile-row > strong,
+  .profile-mail-row a {
+    font-size: clamp(17px, 2.7vw, 32px);
+  }
+
+  .profile-detail {
+    grid-template-columns: 24% 1fr;
+    gap: 3%;
+    font-size: clamp(8px, 1vw, 12px);
+  }
+
+  .index-item {
+    font-size: clamp(25px, 4.2vw, 46px);
+  }
+
+  .project-text {
+    padding: 9% 7%;
+  }
+
+  .project-text h2,
+  .promotion-header h2 {
+    font-size: clamp(22px, 2.8vw, 36px);
+  }
+
+  #team01 .project-text h2,
+  #team02 .project-text h2 {
+    font-size: clamp(20px, 2.45vw, 32px);
+  }
+
+  .project-buttons {
+    gap: 8px;
+  }
+
+  .project-buttons a,
+  .button {
+    min-height: 34px;
+    padding: 0 12px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 700px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .section {
+    min-height: auto;
+    padding: 28px 14px;
+    overflow: visible;
+  }
+
+  .section-frame {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+
+  /* 메인 */
+  .hero-frame {
+    min-height: 360px;
+    aspect-ratio: auto;
+  }
+
+  .hero-background {
+    object-position: center;
+  }
+
+  .hero-title {
+    top: 8%;
+    left: 5%;
+  }
+
+  .hero-title h1 {
+    font-size: clamp(48px, 16vw, 78px);
+  }
+
+  .hero-title p {
+    margin-top: 7%;
+    font-size: clamp(52px, 16.5vw, 82px);
+  }
+
+  .hero-name {
+    left: 5%;
+  }
+
+  .hero-year {
+    right: 5%;
+  }
+
+  /* 프로필: 상세 내용을 숨기지 않고 세로 배치 */
+  .profile-frame {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: 0;
+    padding: 30px 24px 42px;
+  }
+
+  .profile-photo {
+    width: 112px;
+    height: 112px;
+  }
+
+  .profile-content {
+    width: 100%;
+  }
+
+  .profile-row {
+    grid-template-columns: 1fr;
+    flex: none;
+    gap: 12px;
+    min-height: 105px;
+    padding: 20px 0;
+  }
+
+  .profile-row > strong,
+  .profile-mail-row a {
+    padding-left: 0;
+    font-size: clamp(20px, 6.3vw, 29px);
+    white-space: nowrap;
+  }
+
+  .profile-detail {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 12px;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .profile-mail-row {
+    min-height: 78px;
+    align-items: center;
+  }
+
+  /* 목차 */
+  .index-frame {
+    min-height: 430px;
+    padding: 28px 22px;
+  }
+
+  .index-item {
+    grid-template-columns: 23% 1fr;
+    min-height: 74px;
+    font-size: clamp(18px, 5.7vw, 27px);
+  }
+
+  /* 작업물: 텍스트 위, 이미지 아래 */
+  .project-frame,
+  .ai-frame {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 0;
+    background-size: cover;
+  }
+
+  .project-text {
+    min-height: 0;
+    padding: 48px 28px 32px;
+  }
+
+  .project-text h2,
+  .promotion-header h2,
+  #team01 .project-text h2,
+  #team02 .project-text h2 {
+    font-size: clamp(24px, 7.2vw, 34px);
+  }
+
+  .project-text > strong,
+  .promotion-header strong {
+    font-size: 12px;
+  }
+
+  .project-info,
+  .project-description {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .project-buttons {
+    margin-top: 28px;
+  }
+
+  .project-buttons a,
+  .button {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: 10px;
+  }
+
+  .project-image,
+  .ai-frame .project-image {
+    width: 100%;
+    min-height: 0;
+    padding: 12px 20px 34px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ai-frame .project-image {
+    padding: 0;
+  }
+
+  .project-image img,
+  .ai-frame .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ai-frame .project-image img {
+    object-fit: cover;
+  }
+
+  /* 프로모션 */
+  .promotion-frame {
+    display: block;
+    min-height: 0;
+  }
+
+  .promotion-header {
+    gap: 20px;
+    padding: 36px 24px 25px;
+  }
+
+  .promotion-header h2 {
+    line-height: 1.15;
+  }
+
+  .promotion-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .promotion-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 마지막 화면 */
+  .thanks-frame {
+    min-height: 340px;
+    aspect-ratio: auto;
+  }
+
+  .thanks-text h2 {
+    font-size: clamp(58px, 18vw, 86px);
+  }
+
+  .thanks-category {
+    max-width: 70%;
+    font-size: 11px;
+  }
+}
+
+/* 아주 작은 화면 */
+@media (max-width: 420px) {
+  .section {
+    padding-inline: 10px;
+  }
+
+  .hero-frame {
+    min-height: 320px;
+  }
+
+  .hero-title h1 {
+    font-size: 13.5vw;
+  }
+
+  .hero-title p {
+    font-size: 14.5vw;
+  }
+
+  .profile-frame {
+    padding-inline: 20px;
+  }
+
+  .profile-row > strong,
+  .profile-mail-row a {
+    font-size: 5.6vw;
+  }
+
+  .index-item {
+    grid-template-columns: 21% 1fr;
+    font-size: 5.3vw;
+  }
+
+  .project-text {
+    padding-inline: 22px;
+  }
+
+  #team01 .project-text h2,
+  #team02 .project-text h2 {
+    font-size: 6.5vw;
+  }
+}
+
+/* TOP BUTTON */
+
+.top-button {
+  position: fixed;
+  right: clamp(18px, 2.2vw, 38px);
+  bottom: clamp(18px, 2.2vw, 38px);
+  z-index: 100;
+  display: flex;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(139, 0, 0, 0.55);
+  border-radius: 50%;
+  background: rgba(255, 250, 247, 0.78);
+  color: var(--red);
+  box-shadow:
+    0 8px 25px rgba(70, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  font-family: "Pretendard", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    opacity 0.45s ease,
+    visibility 0.45s ease,
+    color 0.4s ease,
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.top-button span {
+  transform: translateY(1px);
+}
+
+.top-button i {
+  font-family: "Pretendard", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.top-button.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.top-button:hover,
+.top-button:focus-visible {
+  border-color: var(--red);
+  background: var(--red);
+  color: #ffffff;
+  box-shadow:
+    0 12px 30px rgba(80, 0, 0, 0.2),
+    0 0 20px rgba(139, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.top-button:hover i,
+.top-button:focus-visible i {
+  transform: translateY(-3px);
+}
+
+.top-button:active {
+  box-shadow: 0 4px 12px rgba(80, 0, 0, 0.18);
+  transform: translateY(0) scale(0.96);
+  transition-duration: 0.12s;
+}
+
+@media (max-width: 700px) {
+  .top-button {
+    right: 16px;
+    bottom: 16px;
+    width: 50px;
+    height: 50px;
+    font-size: 8px;
+  }
+}
