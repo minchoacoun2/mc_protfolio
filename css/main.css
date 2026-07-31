@@ -482,6 +482,10 @@ body {
   transition-delay: 0.95s;
 }
 
+.index-section.is-visible .index-item:nth-child(6) {
+  transition-delay: 1.15s;
+}
+
 .index-item:hover,
 .index-item:focus-visible {
   padding-left: 2%;
@@ -967,6 +971,12 @@ body {
 /* AI 작업은 오른쪽 이미지가 끝까지 차도록 */
 .ai-frame {
   grid-template-columns: 57% 43%;
+}
+
+#ai .ai-frame {
+  border: 1px solid var(--red);
+  background-color: #ffffff;
+  background-image: none;
 }
 
 /* 팀 프로젝트 제목은 숫자까지 한 줄로 정렬 */
@@ -1537,5 +1547,140 @@ body {
     width: 50px;
     height: 50px;
     font-size: 8px;
+  }
+}
+
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.ai-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 40px 20px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  backdrop-filter: blur(7px);
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.ai-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ai-modal__backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.ai-modal__content {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 94vw);
+  height: calc(100vh - 80px);
+  margin: 0 auto;
+  padding: 60px 35px 35px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(12px);
+  overscroll-behavior: contain;
+}
+
+.promotion-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.promotion-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.promotion-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.promotion-modal__content {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 94vw);
+  max-height: calc(100vh - 40px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.promotion-modal__close {
+  position: sticky;
+  top: 16px;
+  z-index: 3;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  margin: 16px 16px -64px auto;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  color: #222;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.promotion-modal__images {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 0;
+}
+
+.promotion-modal__images > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .promotion-modal {
+    padding: 10px;
+  }
+
+  .promotion-modal__content {
+    width: 100%;
+    max-height: calc(100vh - 20px);
+    border-radius: 10px;
   }
 }

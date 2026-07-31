@@ -115,6 +115,11 @@
           <strong>PROMOTION</strong>
         </a>
 
+        <a class="index-item" href="#ai">
+          <span>06/</span>
+          <strong>AI-DRIVEN DESIGN</strong>
+        </a>
+
       </nav>
     </section>
 
@@ -243,13 +248,50 @@
             <strong>PERSONAL 100%</strong>
           </div>
 
-          <a class="button" href="./promotion.html" target="_blank">자세히 보기</a>
+          <a class="button" href="#" id="promotionPopupButton">자세히 보기</a>
         </div>
 
         <div class="promotion-image">
           <img
             src="./images/promotion_img.png"
             alt="프로모션 배너 및 포스터"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. AI-DRIVEN DESIGN -->
+    <section class="section project-section" id="ai">
+      <div class="section-frame project-frame ai-frame reveal">
+        <div class="project-text">
+          <h2>AI-DRIVEN DESIGN</h2>
+
+          <strong>PERSONAL 100%</strong>
+
+          <p class="project-description">
+            아이봄아동병원은 아이의 건강한 성장과<br>
+            가족의 안심을 책임지는 지역 밀착형 아동병원입니다.<br>
+            전문적인 의료 서비스와 따뜻한 돌봄을 바탕으로<br>
+            아이들이 편안하게 진료받고,<br>
+            부모님들은 안심할 수 있는 의료 환경을 제공합니다.
+          </p>
+
+          <p class="project-description">
+            본 프로젝트는 Chat GPT와 Gemini 이미지 생성 AI를 활용하여<br>
+            아이봄아동병원의 브랜드 콘셉트, 홍보 문구, 키비주얼을 기획하고<br>
+            웹 배너 및 SNS 홍보물을 제작하는 것을 목표로 합니다.
+          </p>
+
+          <div class="project-buttons">
+            <a href="./ai.html" target="_blank">컨셉페이지</a>
+            <a href="#" id="aiPromotionButton">프로모션</a>
+          </div>
+        </div>
+
+        <div class="project-image">
+          <img
+            src="./images/ai_bg.png"
+            alt="아이봄아동병원 AI 디자인 프로젝트"
           >
         </div>
       </div>
@@ -273,7 +315,7 @@
           <p>봐주셔서 감사합니다.</p>
         </div>
 
-        <p class="thanks-category">WEB · BRANDING · GRAPIC · AI</p>
+        <p class="thanks-category">WEB · BRANDING · GRAPHIC · AI</p>
         <p class="thanks-year">2026</p>
       </div>
     </section>
@@ -284,5 +326,46 @@
     <span>TOP</span>
     <i aria-hidden="true">↑</i>
   </button>
+
+  <div class="ai-modal" id="aiPromotionModal" aria-hidden="true">
+  <div class="ai-modal__backdrop"></div>
+
+  <div class="ai-modal__content" role="dialog" aria-modal="true">
+    <button class="ai-modal__close" type="button" aria-label="팝업 닫기">
+      ×
+    </button>
+
+    <div class="ai-modal__images">
+      <img src="./images/ai_mockup1.png" alt="아이봄아동병원 모바일 목업">
+      <img src="./images/ai_mockup2.png" alt="아이봄아동병원 데스크톱 목업">
+    </div>
+  </div>
+</div>
+
+<div class="promotion-modal" id="promotionPopupModal" aria-hidden="true">
+  <div class="promotion-modal__backdrop"></div>
+
+  <div
+    class="promotion-modal__content"
+    role="dialog"
+    aria-modal="true"
+    aria-label="프로모션 작업 보기"
+  >
+    <button
+      type="button"
+      class="promotion-modal__close"
+      aria-label="팝업 닫기"
+    >
+      ×
+    </button>
+
+    <div class="promotion-modal__images">
+      <img src="./images/promotion_01.png" alt="프로모션 디자인 1">
+      <img src="./images/promotion_02.png" alt="프로모션 디자인 2">
+      <img src="./images/promotion_03.png" alt="프로모션 디자인 3">
+      <img src="./images/promotion_04.png" alt="프로모션 디자인 4">
+    </div>
+  </div>
+</div>
 </body>
 </html>

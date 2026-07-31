@@ -112,13 +112,17 @@ function moveSection(index) {
 /* 마우스 휠 */
 
 window.addEventListener(
+  
   "wheel",
   (event) => {
+    if (document.body.classList.contains("modal-open")) {
+      return;
+    }
     if (
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       window.innerWidth <= 700
     ) {
-      return;
+      return; 
     }
 
     if (Math.abs(event.deltaY) < 25) return;
@@ -143,6 +147,8 @@ window.addEventListener(
     passive: false
   }
 );
+
+
 
 /* 키보드 */
 
@@ -173,6 +179,14 @@ window.addEventListener("keydown", (event) => {
       Math.max(currentIndex - 1, 0)
     );
   }
+  document.addEventListener("keydown", (event) => {
+  // 팝업이 열렸을 때는 섹션 이동 방지
+  if (document.body.classList.contains("modal-open")) {
+    return;
+  }
+
+  // 기존 섹션 이동 코드...
+});
 });
 
 /* 모바일 터치 */
@@ -276,4 +290,88 @@ if (topButton) {
   });
 
   updateTopButton();
+}
+
+const aiPromotionButton = document.querySelector("#aiPromotionButton");
+const aiPromotionModal = document.querySelector("#aiPromotionModal");
+
+if (aiPromotionButton && aiPromotionModal) {
+  const closeButton = aiPromotionModal.querySelector(".ai-modal__close");
+  const backdrop = aiPromotionModal.querySelector(".ai-modal__backdrop");
+
+  const openModal = () => {
+    aiPromotionModal.classList.add("is-open");
+    aiPromotionModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  };
+
+  const closeModal = () => {
+    aiPromotionModal.classList.remove("is-open");
+    aiPromotionModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  };
+
+  aiPromotionButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    openModal();
+  });
+
+  closeButton.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+}
+
+const promotionPopupButton = document.querySelector(
+  "#promotionPopupButton"
+);
+const promotionPopupModal = document.querySelector(
+  "#promotionPopupModal"
+);
+
+if (promotionPopupButton && promotionPopupModal) {
+  const promotionCloseButton = promotionPopupModal.querySelector(
+    ".promotion-modal__close"
+  );
+  const promotionBackdrop = promotionPopupModal.querySelector(
+    ".promotion-modal__backdrop"
+  );
+  const promotionModalContent = promotionPopupModal.querySelector(
+    ".promotion-modal__content"
+  );
+
+  const openPromotionModal = () => {
+    promotionPopupModal.classList.add("is-open");
+    promotionPopupModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    promotionModalContent.scrollTop = 0;
+  };
+
+  const closePromotionModal = () => {
+    promotionPopupModal.classList.remove("is-open");
+    promotionPopupModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  };
+
+  promotionPopupButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    openPromotionModal();
+  });
+
+  promotionCloseButton.addEventListener("click", closePromotionModal);
+  promotionBackdrop.addEventListener("click", closePromotionModal);
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      promotionPopupModal.classList.contains("is-open")
+    ) {
+      closePromotionModal();
+    }
+  });
 }
