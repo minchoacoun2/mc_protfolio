@@ -375,3 +375,105 @@ if (promotionPopupButton && promotionPopupModal) {
     }
   });
 }
+
+const editorialConceptButton = document.querySelector(
+  "#editorialConceptButton"
+);
+const editorialConceptModal = document.querySelector(
+  "#editorialConceptModal"
+);
+
+if (editorialConceptButton && editorialConceptModal) {
+  const conceptCloseButton = editorialConceptModal.querySelector(
+    ".concept-modal__close"
+  );
+  const conceptBackdrop = editorialConceptModal.querySelector(
+    ".concept-modal__backdrop"
+  );
+  const conceptContent = editorialConceptModal.querySelector(
+    ".concept-modal__content"
+  );
+
+  const openConceptModal = () => {
+    editorialConceptModal.classList.add("is-open");
+    editorialConceptModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    conceptContent.scrollTop = 0;
+    conceptCloseButton.focus();
+  };
+
+  const closeConceptModal = () => {
+    editorialConceptModal.classList.remove("is-open");
+    editorialConceptModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    editorialConceptButton.focus();
+  };
+
+  editorialConceptButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    openConceptModal();
+  });
+
+  conceptCloseButton.addEventListener("click", closeConceptModal);
+  conceptBackdrop.addEventListener("click", closeConceptModal);
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      editorialConceptModal.classList.contains("is-open")
+    ) {
+      closeConceptModal();
+    }
+  });
+}
+
+const editorialMockupButton = document.querySelector(
+  "#editorialMockupButton"
+);
+const editorialMockupModal = document.querySelector(
+  "#editorialMockupModal"
+);
+
+if (editorialMockupButton && editorialMockupModal) {
+  const mockupCloseButton = editorialMockupModal.querySelector(
+    ".mockup-modal__close"
+  );
+  const mockupBackdrop = editorialMockupModal.querySelector(
+    ".mockup-modal__backdrop"
+  );
+  const mockupContent = editorialMockupModal.querySelector(
+    ".mockup-modal__content"
+  );
+
+  const openMockupModal = () => {
+    editorialMockupModal.classList.add("is-open");
+    editorialMockupModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    mockupContent.scrollTop = 0;
+    mockupCloseButton.focus();
+  };
+
+  const closeMockupModal = () => {
+    editorialMockupModal.classList.remove("is-open");
+    editorialMockupModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    editorialMockupButton.focus();
+  };
+
+  editorialMockupButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    openMockupModal();
+  });
+
+  mockupCloseButton.addEventListener("click", closeMockupModal);
+  mockupBackdrop.addEventListener("click", closeMockupModal);
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      editorialMockupModal.classList.contains("is-open")
+    ) {
+      closeMockupModal();
+    }
+  });
+}
