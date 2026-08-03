@@ -759,72 +759,6 @@ body {
 
 /* MOBILE */
 
-@media (max-width: 700px) {
-  html {
-    scroll-snap-type: y proximity;
-  }
-
-  .section {
-    min-height: auto;
-    padding: 35px 12px;
-  }
-
-  .section-frame {
-    width: 100%;
-    min-height: 580px;
-    aspect-ratio: auto;
-  }
-
-  .hero-frame,
-  .thanks-frame {
-    min-height: 48.8vw;
-  }
-
-  .profile-frame {
-    grid-template-columns: 23% 1fr;
-    min-height: 440px;
-  }
-
-  .profile-row {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-detail {
-    display: none;
-  }
-
-  .index-frame {
-    min-height: 440px;
-  }
-
-  .index-item {
-    grid-template-columns: 25% 1fr;
-    font-size: clamp(18px, 5vw, 30px);
-  }
-
-  .project-frame,
-  .ai-frame {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .project-text {
-    min-height: 360px;
-    padding: 50px 30px;
-  }
-
-  .project-image {
-    min-height: 420px;
-  }
-
-  .promotion-frame {
-    grid-template-rows: auto 420px;
-  }
-
-  .promotion-header {
-    padding: 35px 25px;
-  }
-}
 
 /* REDUCED MOTION */
 
@@ -1052,18 +986,6 @@ body {
 .index-section.is-visible .index-item:nth-child(4) { transition-delay: 0.78s; }
 .index-section.is-visible .index-item:nth-child(5) { transition-delay: 1s; }
 
-@media (max-width: 700px) {
-  .project-frame,
-  .ai-frame {
-    grid-template-columns: 1fr;
-  }
-
-  .project-image,
-  .ai-frame .project-image {
-    min-height: 420px;
-    padding: 20px;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-title h1,
@@ -1153,317 +1075,10 @@ body {
    ========================================================= */
 
 /* 태블릿 */
-@media (max-width: 1100px) {
-  .section {
-    padding: 42px 24px;
-  }
-
-  .section-frame {
-    width: 100%;
-  }
-
-  .profile-frame {
-    grid-template-columns: 22% 1fr;
-    gap: 2.5%;
-    padding: 5% 3%;
-  }
-
-  .profile-row > strong,
-  .profile-mail-row a {
-    font-size: clamp(17px, 2.7vw, 32px);
-  }
-
-  .profile-detail {
-    grid-template-columns: 24% 1fr;
-    gap: 3%;
-    font-size: clamp(8px, 1vw, 12px);
-  }
-
-  .index-item {
-    font-size: clamp(25px, 4.2vw, 46px);
-  }
-
-  .project-text {
-    padding: 9% 7%;
-  }
-
-  .project-text h2,
-  .promotion-header h2 {
-    font-size: clamp(22px, 2.8vw, 36px);
-  }
-
-  #team01 .project-text h2,
-  #team02 .project-text h2 {
-    font-size: clamp(20px, 2.45vw, 32px);
-  }
-
-  .project-buttons {
-    gap: 8px;
-  }
-
-  .project-buttons a,
-  .button {
-    min-height: 34px;
-    padding: 0 12px;
-  }
-}
 
 /* 모바일 */
-@media (max-width: 700px) {
-  html {
-    scroll-snap-type: y proximity;
-  }
-
-  .section {
-    min-height: auto;
-    padding: 28px 14px;
-    overflow: visible;
-  }
-
-  .section-frame {
-    width: 100%;
-    min-height: 0;
-    aspect-ratio: auto;
-  }
-
-  /* 메인 */
-  .hero-frame {
-    min-height: 360px;
-    aspect-ratio: auto;
-  }
-
-  .hero-background {
-    object-position: center;
-  }
-
-  .hero-title {
-    top: 8%;
-    left: 5%;
-  }
-
-  .hero-title h1 {
-    font-size: clamp(48px, 16vw, 78px);
-  }
-
-  .hero-title p {
-    margin-top: 7%;
-    font-size: clamp(52px, 16.5vw, 82px);
-  }
-
-  .hero-name {
-    left: 5%;
-  }
-
-  .hero-year {
-    right: 5%;
-  }
-
-  /* 프로필: 상세 내용을 숨기지 않고 세로 배치 */
-  .profile-frame {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    min-height: 0;
-    padding: 30px 24px 42px;
-  }
-
-  .profile-photo {
-    width: 112px;
-    height: 112px;
-  }
-
-  .profile-content {
-    width: 100%;
-  }
-
-  .profile-row {
-    grid-template-columns: 1fr;
-    flex: none;
-    gap: 12px;
-    min-height: 105px;
-    padding: 20px 0;
-  }
-
-  .profile-row > strong,
-  .profile-mail-row a {
-    padding-left: 0;
-    font-size: clamp(20px, 6.3vw, 29px);
-    white-space: nowrap;
-  }
-
-  .profile-detail {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 12px;
-    font-size: 11px;
-    line-height: 1.55;
-  }
-
-  .profile-mail-row {
-    min-height: 78px;
-    align-items: center;
-  }
-
-  /* 목차 */
-  .index-frame {
-    min-height: 430px;
-    padding: 28px 22px;
-  }
-
-  .index-item {
-    grid-template-columns: 23% 1fr;
-    min-height: 74px;
-    font-size: clamp(18px, 5.7vw, 27px);
-  }
-
-  /* 작업물: 텍스트 위, 이미지 아래 */
-  .project-frame,
-  .ai-frame {
-    display: grid;
-    grid-template-columns: 1fr;
-    min-height: 0;
-    background-size: cover;
-  }
-
-  .project-text {
-    min-height: 0;
-    padding: 48px 28px 32px;
-  }
-
-  .project-text h2,
-  .promotion-header h2,
-  #team01 .project-text h2,
-  #team02 .project-text h2 {
-    font-size: clamp(24px, 7.2vw, 34px);
-  }
-
-  .project-text > strong,
-  .promotion-header strong {
-    font-size: 12px;
-  }
-
-  .project-info,
-  .project-description {
-    font-size: 12px;
-    line-height: 1.65;
-  }
-
-  .project-buttons {
-    margin-top: 28px;
-  }
-
-  .project-buttons a,
-  .button {
-    min-height: 36px;
-    padding: 0 13px;
-    font-size: 10px;
-  }
-
-  .project-image,
-  .ai-frame .project-image {
-    width: 100%;
-    min-height: 0;
-    padding: 12px 20px 34px;
-    aspect-ratio: 4 / 3;
-  }
-
-  .ai-frame .project-image {
-    padding: 0;
-  }
-
-  .project-image img,
-  .ai-frame .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .ai-frame .project-image img {
-    object-fit: cover;
-  }
-
-  /* 프로모션 */
-  .promotion-frame {
-    display: block;
-    min-height: 0;
-  }
-
-  .promotion-header {
-    gap: 20px;
-    padding: 36px 24px 25px;
-  }
-
-  .promotion-header h2 {
-    line-height: 1.15;
-  }
-
-  .promotion-image {
-    aspect-ratio: 16 / 10;
-  }
-
-  .promotion-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* 마지막 화면 */
-  .thanks-frame {
-    min-height: 340px;
-    aspect-ratio: auto;
-  }
-
-  .thanks-text h2 {
-    font-size: clamp(58px, 18vw, 86px);
-  }
-
-  .thanks-category {
-    max-width: 70%;
-    font-size: 11px;
-  }
-}
 
 /* 아주 작은 화면 */
-@media (max-width: 420px) {
-  .section {
-    padding-inline: 10px;
-  }
-
-  .hero-frame {
-    min-height: 320px;
-  }
-
-  .hero-title h1 {
-    font-size: 13.5vw;
-  }
-
-  .hero-title p {
-    font-size: 14.5vw;
-  }
-
-  .profile-frame {
-    padding-inline: 20px;
-  }
-
-  .profile-row > strong,
-  .profile-mail-row a {
-    font-size: 5.6vw;
-  }
-
-  .index-item {
-    grid-template-columns: 21% 1fr;
-    font-size: 5.3vw;
-  }
-
-  .project-text {
-    padding-inline: 22px;
-  }
-
-  #team01 .project-text h2,
-  #team02 .project-text h2 {
-    font-size: 6.5vw;
-  }
-}
 
 /* TOP BUTTON */
 
@@ -1546,15 +1161,6 @@ body {
   transition-duration: 0.12s;
 }
 
-@media (max-width: 700px) {
-  .top-button {
-    right: 16px;
-    bottom: 16px;
-    width: 50px;
-    height: 50px;
-    font-size: 8px;
-  }
-}
 
 
 body.modal-open {
@@ -1679,17 +1285,6 @@ body.modal-open {
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .promotion-modal {
-    padding: 10px;
-  }
-
-  .promotion-modal__content {
-    width: 100%;
-    max-height: calc(100vh - 20px);
-    border-radius: 10px;
-  }
-}
 
 /* EDITORIAL CONCEPT POPUP */
 
@@ -1757,24 +1352,6 @@ body.modal-open {
   height: auto;
 }
 
-@media (max-width: 768px) {
-  .concept-modal {
-    padding: 10px;
-  }
-
-  .concept-modal__content {
-    width: 100%;
-    max-height: calc(100vh - 20px);
-  }
-
-  .concept-modal__close {
-    top: 10px;
-    width: 40px;
-    height: 40px;
-    margin: 10px 10px -50px auto;
-    font-size: 24px;
-  }
-}
 
 /* EDITORIAL MOCKUP POPUP */
 
@@ -1851,24 +1428,6 @@ body.modal-open {
   margin: 0;
 }
 
-@media (max-width: 768px) {
-  .mockup-modal {
-    padding: 10px;
-  }
-
-  .mockup-modal__content {
-    width: 100%;
-    max-height: calc(100vh - 20px);
-  }
-
-  .mockup-modal__close {
-    top: 10px;
-    width: 40px;
-    height: 40px;
-    margin: 10px 10px -50px auto;
-    font-size: 24px;
-  }
-}
 
 /* EDITORIAL DESIGN */
 
@@ -1902,13 +1461,88 @@ body.modal-open {
   object-position: center;
 }
 
-@media (max-width: 700px) {
-  #editorial .editorial-image {
-    padding: 0;
-    aspect-ratio: 4 / 3;
+/* INDEX: 7개 항목 순차 등장 */
+
+.index-section.is-visible .index-item:nth-child(6) {
+  transition-delay: 1.22s;
+}
+
+.index-section.is-visible .index-item:nth-child(7) {
+  transition-delay: 1.44s;
+}
+
+/* MACBOOK RESPONSIVE: 13–16 inch */
+
+@media (min-width: 1024px) and (max-width: 1728px) {
+  .section {
+    min-height: 100vh;
+    padding: clamp(24px, 3vh, 36px) clamp(24px, 2.6vw, 42px);
   }
 
-  #editorial .editorial-image img {
-    object-fit: cover;
+  .section-frame {
+    width: min(94vw, 1600px);
+    max-height: 92vh;
+  }
+
+  .index-frame {
+    padding: 3.5% 4.2%;
+  }
+
+  .index-item {
+    min-height: 0;
+    padding: 0;
+    font-size: clamp(36px, 3.65vw, 63px);
+    line-height: 0.98;
+  }
+
+  .profile-frame {
+    grid-template-columns: 22% 1fr;
+    gap: 2.5%;
+    padding: 5% 3%;
+  }
+
+  .profile-row > strong,
+  .profile-mail-row a {
+    font-size: clamp(18px, 2.1vw, 34px);
+  }
+
+  .profile-detail {
+    grid-template-columns: 24% 1fr;
+    gap: 3%;
+    font-size: clamp(9px, 0.8vw, 12px);
+  }
+
+  .project-text {
+    padding: 8.5% 7%;
+  }
+
+  .project-text h2,
+  .promotion-header h2 {
+    font-size: clamp(25px, 2.45vw, 42px);
+  }
+
+  #team01 .project-text h2,
+  #team02 .project-text h2,
+  #editorial .project-text h2 {
+    font-size: clamp(23px, 2.15vw, 37px);
+  }
+
+  .project-buttons {
+    gap: 8px;
+  }
+
+  .project-buttons a,
+  .button {
+    min-height: 34px;
+    padding: 0 13px;
+  }
+
+  .concept-modal__content,
+  .mockup-modal__content,
+  .promotion-modal__content,
+  .ai-modal__content {
+    width: min(1500px, 94vw);
+    max-height: 92vh;
   }
 }
+

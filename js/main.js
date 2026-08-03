@@ -4,7 +4,6 @@ const indexSection = document.querySelector(".index-section");
 
 let currentIndex = 0;
 let scrolling = false;
-let touchStartY = 0;
 
 /* 일반 섹션 등장 */
 
@@ -118,10 +117,7 @@ window.addEventListener(
     if (document.body.classList.contains("modal-open")) {
       return;
     }
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      window.innerWidth <= 700
-    ) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return; 
     }
 
@@ -188,49 +184,6 @@ window.addEventListener("keydown", (event) => {
   // 기존 섹션 이동 코드...
 });
 });
-
-/* 모바일 터치 */
-
-window.addEventListener(
-  "touchstart",
-  (event) => {
-    touchStartY = event.touches[0].clientY;
-  },
-  {
-    passive: true
-  }
-);
-
-window.addEventListener(
-  "touchend",
-  (event) => {
-    const touchEndY = event.changedTouches[0].clientY;
-    const difference = touchStartY - touchEndY;
-
-    if (
-      Math.abs(difference) < 80 ||
-      scrolling ||
-      window.innerWidth <= 700
-    ) {
-      return;
-    }
-
-    currentIndex = findCurrentSection();
-
-    if (difference > 0) {
-      moveSection(
-        Math.min(currentIndex + 1, sections.length - 1)
-      );
-    } else {
-      moveSection(
-        Math.max(currentIndex - 1, 0)
-      );
-    }
-  },
-  {
-    passive: true
-  }
-);
 
 window.addEventListener("load", () => {
   currentIndex = findCurrentSection();
